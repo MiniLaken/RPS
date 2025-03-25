@@ -10,25 +10,12 @@ def string_checker(user_response, valid_ans):
             if item == user_response:
                 return item
 
-                # check if the user response is the same as 
-                # the first letter of an item in the list
-                elif user_response == item[0]:
-                    return item
-
-            return "invalid"
-
-        
-        for item in valid_ans:
-            # check if the user response is a word in the list
-            if item == user_response:
+            # check if the user response is the same as 
+            # the first letter of an item in the list
+            elif user_response == item[0]:
                 return item
 
-                # check if the user response is the same as
-                # the frst letter of an item in the list
-                elif user_reponse == item[0]:
-                    return item
-
-        return "invalid"
+            return "invalid"
 
 
 # Automated testing is below in the form (test_case, expected_value)
