@@ -1,20 +1,47 @@
-# Check that users have entered a valid
-# option based on a list
-
-def string_checker(user_response, valid_ans):
+# checks for an integer more than 0 (allows <enter>)
+def int_checker(to_check):
     while True:
+        error = " Please enter an integer that is 1 or more."
+        
+        # check for infinte mode
+        if to_check == "":
+            return "infinite"
 
-        # Get user response and make sure sure it's lowercase
-        user_response = user_response.lower()
+        try:
+            response = int(to_check)
 
-        for item in valid_ans:
-            # check if the user response is a word in the list
-            if item == user_response:
-                return item
-            
-            # check if the user response is the same as
-            # the first letter of an item in the list
-            elif user_response == item[0]:
-                return item
-            
-            return"invalid"
+            # checks that the number is more than / equal to 13
+            if response < 13:
+                print(error)
+                return "invalid"
+            else:
+                return response
+
+        except ValueError:
+            print(error)
+            return "invalid"
+
+# Automated testing is below in the form (test_case, expected_value)
+to_test = [
+    ("xlii", "invalid"),
+    ("0.5", "invalid"),
+    ("0", "invalid"),
+    (1, 1),
+    (1, 2),
+    ("", "infinite"),
+]
+
+# run tests!
+for item in to_test:
+    # retrieve test case and expected value
+    case = item[0]
+    expected = item[1]
+
+    # get actual value (ie: test ticket function)
+    actual = int_checker(case)
+
+    # compare actual and expected and output pass / fail
+    if actual == expected:
+        print(f" ✅✅✅Passed! Case: {case}, expected: {expected}, received: {actual} ✅✅✅")
+    else:
+        print(f"❌❌❌ Failed! Case: {case}, expected: {expected}, received: {actual} ❌❌❌") 
