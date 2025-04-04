@@ -1,18 +1,18 @@
 # checks for an integer more than 0 (allows <enter>)
-def int_checker():
+def int_checker(question):
     while True:
         error = " Please enter an integer that is 1 or more."
 
-        to_check = input()
+        to_check = input(question)
 
         # check for infinte mode
         if to_check == "":
             return "infinite"
 
         try:
-            response = int()
+            response = int(to_check)
 
-            # checks that the number is more than / equal to 13
+            # checks that the number is more than / equal to 1
             if response < 1:
                 print(error)
             else:
@@ -37,19 +37,27 @@ print()
 # Ask user for number of rounds / infinite mode
 num_rounds = int_checker("How many rounds would you like? Push <enter> for infinite mode: ")
 
-if num_rounds == "":
+if num_rounds == "infinite":
     mode = "infinite"
+    
     num_rounds = 5
 
 
 # Game loop starts here
 while rounds_player <= num_rounds:
-    input("Choose: ")
+    
+    user_choice = input("Choose: ")
+    if user_choice == "xxx":
+        break
+        
     rounds_player += 1
+    print("rounds played: ", rounds_player)
 
-    # if users are in infinite mode, increase number of rounds!
-    num_rounds += 1
+        # if users are in infinite mode, increase number of rounds!
+    if mode == "infinite":
+        num_rounds += 1
 
+print("We are done")
 
 # Game loop ends here
 
