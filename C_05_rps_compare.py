@@ -1,28 +1,23 @@
 # Check that users have entered a valid
 # option based on a list
 def rps_compare(user, comp):
-    while True:
+   
+   # If the user and thye computer choice is the same, it's a tie
+   if user == comp:
+            result = "tie"
+        
+    # There are three ways to win 
+    elif user == " paper" and comp == "rock":
+        result = "win"
+    elif user == "scissors" and comp == "paper":
+        result = "win"
+    elif user == "rock" and comp == "scissors":
+        result = " win"
 
-        # Get  user response and make sure it's lowercase
-        user_response = user_response. lower()
+    # if it's not a win/ tie, then it's a loss
 
 
-        for item in valid_ans:
-            # check if the user response is a word in the list
-            if item == user_response:
-                return item
-
-            # check if the user response is the same as 
-            # the first letter of an item in the list
-            elif user_response == item[0]:
-                return item
-
-            return "invalid"
-
-    if user == comp:
-        result = "tie"
-
-    return result
+          
 
 
     
