@@ -11,7 +11,7 @@ def int_checker(to_check):
             response = int(to_check)
 
             # checks that the number is more than / equal to 13
-            if response < 13:
+            if response < 1:
                 print(error)
                 return "invalid"
             else:
@@ -27,7 +27,7 @@ to_test = [
     ("0.5", "invalid"),
     ("0", "invalid"),
     (1, 1),
-    (1, 2),
+    (2, 2),
     ("", "infinite"),
 ]
 
@@ -44,4 +44,6 @@ for item in to_test:
     if actual == expected:
         print(f" ✅✅✅Passed! Case: {case}, expected: {expected}, received: {actual} ✅✅✅")
     else:
-        print(f"❌❌❌ Failed! Case: {case}, expected: {expected}, received: {actual} ❌❌❌") 
+        print(f"❌❌❌ Failed! Case: {case}, expected: {expected}, received: {actual} ❌❌❌")       
+
+        
