@@ -23,11 +23,55 @@ def int_checker(question):
         except ValueError:
             print(error)
 
+# Check that users have entered a valid
+# option based on a list
+def string_checker(user_response, valid_ans):
+    while True:
+
+        # Get  user response and make sure it's lowercase
+        user_response = user_response. lower()
+
+
+        for item in valid_ans:
+            # check if the user response is a word in the list
+            if item == user_response:
+                return item
+
+            # check if the user response is the same as 
+            # the first letter of an item in the list
+            elif user_response == item[0]:
+                return item
+
+            return "invalid"
+
 #compares user / computer choice and returns
 # results ( win / lose / tie)
+def rps_compare(user, comp):
+   
+    # If the user and thye computer choice is the same, it's a tie
+    if user == comp:
+        round_result = "tie"
 
+    # There are three ways to win 
+    elif user == " paper" and comp == "rock":
+        round_result = "win"
+    elif user == "scissors" and comp == "paper":
+        round_result = "win"
+    elif user == "rock" and comp == "scissors":
+        round_result = " win"
+    
+
+    # if it's not a win/ tie, then it's a loss
+    else:
+        result = "lose"
+
+    return result
+
+# Main routine starts here
 
 # Ask user for number of rounds / infinite mode
+rounds_player = 0
+
 num_rounds = int_checker("How many rounds would you like? Push <enter> for infinite mode: ")
 
 if num_rounds == "infinite":
@@ -52,21 +96,7 @@ while rounds_player <= num_rounds:
     user_choice = string_checker("Choose: ", rps_list)
     print("you chose", user_choice)
 
-def rps_compare(user, comp):
-   
-   # If the user and thye computer choice is the same, it's a tie
-   if user == comp:
-        round_result = "tie"
-        
-    # There are three ways to win 
-    elif user == " paper" and comp == "rock":
-            round_result = "win"
-    elif user == "scissors" and comp == "paper":
-            round_result = "win"
-    elif user == "rock" and comp == "scissors":
-            round_result = " win"
 
-    # if it's not a win/ tie, then it's a loss
         
 result = rps_compare(user_choice, comp_choice)
 print(f"{user_choice} vs {comp_choice}{result}")
@@ -126,7 +156,24 @@ if user_choice == "xxx":
     break
 
 result = rps_compare(user_choice, comp_choice)
-print(f"{user_choice} vs{comp_choice}, {result}")
+
+# Adjust game lost / game tied counters and add results to game history
+if result == "tie":
+     rounds_tie += 1
+     feedback = "👔👔 It's a tie! 👔👔"
+elif result == "lose":
+     rounds_lost += 1 
+     feedback = "😥😥 You lose. 😥😥"
+else:
+     feedback = "👍👍 You won. 👍👍"
+
+# Set up to the game and output it user.
+# Add it to the game history list (include the round number)
+print(f"{user_choice} vs{comp_choice}, {feedback}")
+history_item = f"Round:{rounds_player} - {round_feedback}"
+
+print(round_feedback)
+game_history.append(history_item)
 
 rounds_player += 1
 
@@ -135,6 +182,15 @@ if mode == "infinite":
         num_rounds += 1
 
         # Game loop ends here
+
+
+
+
+        
+
+     
+
+
 
 
 
