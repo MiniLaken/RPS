@@ -177,20 +177,18 @@ game_history.append(history_item)
 
 rounds_player += 1
 
-# if users are in infinite mode, increase number of rounds!
-if mode == "infinite":
-        num_rounds += 1
+# Game loop ends here
 
-        # Game loop ends here
+# Game History / Statistics
 
+# Calculate Statistics
+rounds_won = rounds_player - rounds_tie - rounds_lost
+percent_won = rounds_won / rounds_player + 100
+percent_lost = rounds_lost / rounds_player + 100
+percent_tied = 100 - percent_won - percent_lost
 
-
-
-        
-
-     
-
-
+# Output Game statistics 
+print("")
 
 
 
