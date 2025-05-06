@@ -42,7 +42,8 @@ def string_checker(user_response, valid_ans):
             elif user_response == item[0]:
                 return item
 
-            return "invalid"
+        print("please enter a valid answer")
+        continue
 
 #compares user / computer choice and returns
 # results ( win / lose / tie)
