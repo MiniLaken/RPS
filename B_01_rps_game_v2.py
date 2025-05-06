@@ -69,39 +69,6 @@ def rps_compare(user, comp):
 
 # Main routine starts here
 
-# Ask user for number of rounds / infinite mode
-rounds_player = 0
-
-num_rounds = int_checker("How many rounds would you like? Push <enter> for infinite mode: ")
-
-if num_rounds == "infinite":
-    mode = "infinite"
-    num_rounds = 5
-
-
-# Game loop starts here
-while rounds_player <= num_rounds:
-    if mode == "infinite":
-        rounds_heading = "\n Round {rounds_played + 1} (Infinite Mode) "
-    else:
-        rounds_heading = f"\n💿💿💿 Round {rounds_player + 1} of {num_rounds}💿💿💿"
-
-        print(rounds_heading)
-
-        # randomly choose from the rps list(excluding the exit code)
-    comp_choice = random. choice(rps_list[:-1])
-    print(" Computer choice", comp_choice)
-
-    # get user choice
-    user_choice = string_checker("Choose: ", rps_list)
-    print("you chose", user_choice)
-
-
-        
-result = rps_compare(user_choice, comp_choice)
-print(f"{user_choice} vs {comp_choice}{result}")
-
-# Main routine start here
 
 # Intialise game variables
 mode = "regular"
@@ -119,11 +86,11 @@ print()
 
 # ask user if they want to see the instruction and display
 # them if requested
-want_instruction = string_checker("Do you want to read the instruction? ")
+want_instruction = string_checker("Do you want to read the instruction? ", ('yes', 'no'))
 
 # checks user enter yes (y) or no(n)
 if want_instruction == "yes":
-    instruction()
+    print("instructions go here")
 
     # Ask user for number of rounds / infinite mode
 num_rounds = int_checker("How many rounds would you like? Push <enter> for infinite mode: ")
@@ -135,47 +102,47 @@ if num_rounds == "infinite":
 # Game loop ends here
 while rounds_player < num_rounds:
 
-        # Rounds headings (based on mode)
-        if mode == "infinite":
-            rounds_heading = "\n Round {rounds_played + 1} (Infinite Mode) "
-        else:
-            rounds_heading = f"\n💿💿💿 Round {rounds_player + 1} of {num_rounds}💿💿💿"
+    # Rounds headings (based on mode)
+    if mode == "infinite":
+        rounds_heading = "\n Round {rounds_played + 1} (Infinite Mode) "
+    else:
+        rounds_heading = f"\n💿💿💿 Round {rounds_player + 1} of {num_rounds}💿💿💿"
 
-        print(rounds_heading)
+    print(rounds_heading)
 
-# randomly choose from the rps list(excluding the exit code)
-comp_choice = random. choice(rps_list[:-1])
-print(" Computer choice", comp_choice)
+    # randomly choose from the rps list(excluding the exit code)
+    comp_choice = random. choice(rps_list[:-1])
+    print(" Computer choice", comp_choice)
 
-# get user choice
-user_choice = string_checker("Do you want to read the instruction?")
-# print("you chose", user_choice)
+    # get user choice
+    user_choice = string_checker("Choose...:", rps_list)
+    # print("you chose", user_choice)
 
-# If user choice is the exit code , break the loop
-if user_choice == "xxx":
-    break
+    # If user choice is the exit code , break the loop
+    if user_choice == "xxx":
+        break
 
-result = rps_compare(user_choice, comp_choice)
+    result = rps_compare(user_choice, comp_choice)
 
-# Adjust game lost / game tied counters and add results to game history
-if result == "tie":
-     rounds_tie += 1
-     feedback = "👔👔 It's a tie! 👔👔"
-elif result == "lose":
-     rounds_lost += 1 
-     feedback = "😥😥 You lose. 😥😥"
-else:
-     feedback = "👍👍 You won. 👍👍"
+    # Adjust game lost / game tied counters and add results to game history
+    if result == "tie":
+        rounds_tie += 1
+        feedback = "👔👔 It's a tie! 👔👔"
+    elif result == "lose":
+        rounds_lost += 1 
+        feedback = "😥😥 You lose. 😥😥"
+    else:
+        feedback = "👍👍 You won. 👍👍"
 
-# Set up to the game and output it user.
-# Add it to the game history list (include the round number)
-round_feedback = (f"{user_choice} vs{comp_choice}, {feedback}")
-history_item = f"Round:{rounds_player} - {round_feedback}"
+    # Set up to the game and output it user.
+    # Add it to the game history list (include the round number)
+    round_feedback = (f"{user_choice} vs{comp_choice}, {feedback}")
+    history_item = f"Round:{rounds_player} - {round_feedback}"
 
-print(round_feedback)
-game_history.append(history_item)
+    print(round_feedback)
+    game_history.append(history_item)
 
-rounds_player += 1
+    rounds_player += 1
 
 # Game loop ends here
 
