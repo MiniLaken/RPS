@@ -169,7 +169,7 @@ else:
 
 # Set up to the game and output it user.
 # Add it to the game history list (include the round number)
-print(f"{user_choice} vs{comp_choice}, {feedback}")
+round_feedback = (f"{user_choice} vs{comp_choice}, {feedback}")
 history_item = f"Round:{rounds_player} - {round_feedback}"
 
 print(round_feedback)
@@ -188,7 +188,22 @@ percent_lost = rounds_lost / rounds_player + 100
 percent_tied = 100 - percent_won - percent_lost
 
 # Output Game statistics 
-print("")
+print("📊📊📊 Game Sattistics 📊📊📊")
+print(f"👍 Won: {percent_won:.2f} \t "
+      f"😥 Lost: {percent_lost:.2f} \t "
+      f"👔 Tied: {percent_tied:.2f}")
+
+# ask the user if they want to see their game history and output it if requested.
+see_history = string_checker("\nDo you want to see your game history? ")
+if see_history == "yes":
+    for item in game_history:
+        print(item)
+
+        print()
+        print("Thanks for playing. ")
+
+else:
+    print("🐔🐔🐔 Oops - You chickened out! 🐔🐔🐔")
 
 
 
