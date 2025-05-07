@@ -25,11 +25,11 @@ def int_checker(question):
 
 # Check that users have entered a valid
 # option based on a list
-def string_checker(user_response, valid_ans):
+def string_checker(question, valid_ans):
     while True:
 
         # Get  user response and make sure it's lowercase
-        user_response = user_response. lower()
+        user_response =input(question) . lower()
 
 
         for item in valid_ans:
@@ -51,15 +51,15 @@ def rps_compare(user, comp):
    
     # If the user and thye computer choice is the same, it's a tie
     if user == comp:
-        round_result = "tie"
+        result = "tie"
 
     # There are three ways to win 
     elif user == " paper" and comp == "rock":
-        round_result = "win"
+        result = "win"
     elif user == "scissors" and comp == "paper":
-        round_result = "win"
+       result = "win"
     elif user == "rock" and comp == "scissors":
-        round_result = " win"
+        result = " win"
     
 
     # if it's not a win/ tie, then it's a loss
@@ -105,7 +105,7 @@ while rounds_player < num_rounds:
 
     # Rounds headings (based on mode)
     if mode == "infinite":
-        rounds_heading = "\n Round {rounds_played + 1} (Infinite Mode) "
+        rounds_heading = f"\n Round {rounds_player + 1} (Infinite Mode) "
     else:
         rounds_heading = f"\n💿💿💿 Round {rounds_player + 1} of {num_rounds}💿💿💿"
 
@@ -137,13 +137,14 @@ while rounds_player < num_rounds:
 
     # Set up to the game and output it user.
     # Add it to the game history list (include the round number)
-    round_feedback = (f"{user_choice} vs{comp_choice}, {feedback}")
+    rounds_player += 1
+    round_feedback = (f"{user_choice} vs {comp_choice}, {feedback}")
     history_item = f"Round:{rounds_player} - {round_feedback}"
 
     print(round_feedback)
     game_history.append(history_item)
 
-    rounds_player += 1
+
 
 # Game loop ends here
 
@@ -151,8 +152,8 @@ while rounds_player < num_rounds:
 
 # Calculate Statistics
 rounds_won = rounds_player - rounds_tie - rounds_lost
-percent_won = rounds_won / rounds_player + 100
-percent_lost = rounds_lost / rounds_player + 100
+percent_won = rounds_won / rounds_player * 100
+percent_lost = rounds_lost / rounds_player * 100
 percent_tied = 100 - percent_won - percent_lost
 
 # Output Game statistics 
@@ -162,18 +163,29 @@ print(f"👍 Won: {percent_won:.2f} \t "
       f"👔 Tied: {percent_tied:.2f}")
 
 # ask the user if they want to see their game history and output it if requested.
-see_history = string_checker("\nDo you want to see your game history? ")
+see_history = string_checker("\nDo you want to see your game history? ", ('yes', 'no'))
 if see_history == "yes":
     for item in game_history:
         print(item)
 
-        print()
-        print("Thanks for playing. ")
+    print()
+    print("Thanks for playing. ")
 
 else:
     print("🐔🐔🐔 Oops - You chickened out! 🐔🐔🐔")
 
 
+
+
+        
+
+     
+   
+
+
+  
+
+ 
 
 
         
