@@ -106,6 +106,7 @@ while rounds_player < num_rounds:
     # Rounds headings (based on mode)
     if mode == "infinite":
         rounds_heading = f"\n Round {rounds_player + 1} (Infinite Mode) "
+        num_rounds += 1
     else:
         rounds_heading = f"\n💿💿💿 Round {rounds_player + 1} of {num_rounds}💿💿💿"
 
@@ -175,17 +176,6 @@ else:
     print("🐔🐔🐔 Oops - You chickened out! 🐔🐔🐔")
 
 
-
-
-        
-
-     
-   
-
-
-  
-
- 
 
 
         
