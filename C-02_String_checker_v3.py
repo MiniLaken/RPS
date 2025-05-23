@@ -19,7 +19,7 @@ def string_checker(user_response, valid_ans=["yes", "no"]):
             elif user_response == item[0]:
                 return item
    
-    # print error ifuser does not enter something that is valid
+    # print error if user does not enter something that is valid
     print(error)
     print()
             
